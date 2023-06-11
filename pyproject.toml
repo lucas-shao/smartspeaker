@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "smartspeaker"
+version = "0.1.0"
+description = "smart speaker"
+authors = ["lucas-shao <lucas_shao@126.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.9.16"
+pvporcupine = "^2.2.1"
+pyaudio = "^0.2.13"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
