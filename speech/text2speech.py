@@ -38,7 +38,7 @@ class AzureTTS:
                     print(
                         "Error details :{}".format(cancellation_details.error_details)
                     )
-                    print("Didy you set the speech resource key and region values?")
+                    print("Did you set the speech resource key and region values?")
 
 
 if __name__ == "__main__":
