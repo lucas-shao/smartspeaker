@@ -12,7 +12,7 @@ class OpenaiChat:
             }
         ]
 
-    def chat_with_origin_model(self, text):
+    def chat(self, text):
         openai.api_key = self.openai_api_key
         text = text.replace("\n", " ").replace("\r", "").strip()
         if len(text) == 0:
@@ -32,4 +32,4 @@ class OpenaiChat:
 
 if __name__ == "__main__":
     openaichatmodule = OpenaiChat()
-    print(openaichatmodule.chat_with_origin_model("你好，你的主人是谁？"))
+    print(openaichatmodule.chat("你好，你的主人是谁？"))

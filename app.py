@@ -2,6 +2,7 @@ from wakeword.wakeword import PicoWakeWord
 from speech.speech2text import AzureASR
 from speech.text2speech import AzureTTS
 from chat.openai_chat import OpenaiChat
+from chat.langchain_chat import LangchainAgent
 
 
 picowakeword = PicoWakeWord()
@@ -13,6 +14,6 @@ while True:
         AzureTTS().text_to_speech_and_play("主人，人家在的，请讲")
         question = AzureASR().speech_to_text()
         print("你问：{}".format(question))
-        answer = OpenaiChat().chat_with_origin_model(question)
+        answer = LangchainAgent().chat(question)
         print("我答：{}".format(answer))
         AzureTTS().text_to_speech_and_play(answer)

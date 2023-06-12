@@ -1,4 +1,4 @@
-from langchain_tools.gettime import GetTimeRun
+from chat.langchain_tools.gettime import GetTimeRun
 from langchain.memory import ConversationBufferMemory
 from langchain.agents import Tool
 from langchain.agents.conversational_chat.base import ConversationalChatAgent
@@ -12,7 +12,6 @@ from langchain.chat_models import ChatOpenAI
 from langchain.utilities import SerpAPIWrapper
 from langchain.agents import initialize_agent
 from langchain.agents import AgentType
-from getpass import getpass
 from langchain.agents.agent import AgentOutputParser
 from typing import Any
 import json
@@ -101,7 +100,7 @@ class LangchainAgent:
             agent_kwargs={"system_message": MYPREFIX},
         )
 
-    def chat_with_agent(self, text):
+    def chat(self, text):
         openai.api_key = self.openai_api_key
         text = text.replace("\n", " ").replace("\r", "").strip()
         if len(text) == 0:
@@ -114,7 +113,7 @@ class LangchainAgent:
 if __name__ == "__main__":
     openaiagentmodule = LangchainAgent()
     # print(openaiagentmodule.chat_with_agent("今天是几号?"))
-    print(openaiagentmodule.chat_with_agent("杭州天气怎么样?"))
+    print(openaiagentmodule.chat("杭州天气怎么样?"))
     # print(openaiagentmodule.chat_with_agent("我应该穿什么出门?"))
     # print(openaiagentmodule.chat_with_agent("蔡徐坤的生日是哪天?"))
     # print(openaiagentmodule.chat_with_agent('他有什么爱好?'))
