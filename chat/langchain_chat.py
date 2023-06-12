@@ -41,7 +41,10 @@ Use this if you want to respond directly to the human. Markdown code snippet for
     "action_input": string \\ You should put what you want to return to user here.Attention!When you give the Final Answer,you MUST speak in Chinese!
 }}}}
 ```"""
-MYPREFIX = PREFIX + "\n\n Remember Your name is Cherry!"
+MYPREFIX = (
+    PREFIX
+    + "\n\n Remember Your name is Cherry! When you give the Final Answer,you MUST speak in Chinese!"
+)
 
 
 class MyAgentOutputParser(AgentOutputParser):
@@ -95,7 +98,7 @@ class LangchainAgent:
             agent=AgentType.CHAT_CONVERSATIONAL_REACT_DESCRIPTION,
             verbose=True,
             memory=self.memory,
-            output_parser=self.output_parser,
+            agent_kwargs={"system_message": MYPREFIX},
         )
 
     def chat_with_agent(self, text):
